@@ -10,11 +10,8 @@ import aiofiles
 from dotenv import load_dotenv
 from os import getenv
 import asyncio
-import logging
 import json
 from keyboard import keyboard, editor_keyboard
-
-logging.basicConfig(level=logging.INFO)
 
 load_dotenv()
 
