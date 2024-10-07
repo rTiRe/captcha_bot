@@ -1,0 +1,14 @@
+[Unit]
+Description=Bot app
+
+[Service]
+Type=simple
+EnvironmentFile=/home/tire/Documents/captcha_bot/config/.env
+WorkingDirectory=/home/tire/Documents/captcha_bot
+ExecStartPre=poetry install
+ExecStart=poetry run python app.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
