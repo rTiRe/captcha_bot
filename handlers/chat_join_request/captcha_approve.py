@@ -1,5 +1,4 @@
 import asyncio
-from datetime import datetime
 
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import CommandObject

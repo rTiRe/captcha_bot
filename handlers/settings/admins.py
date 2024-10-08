@@ -6,7 +6,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
 from keyboards import admins_keyboard, return_back_keyboard
-from messages import add_admin_id, get_admins_ids, get_owner_id, set_owner_id
+from messages import add_admin_id, get_admins_ids, get_owner_id
 from states import SettingsStates
 
 from .router import router

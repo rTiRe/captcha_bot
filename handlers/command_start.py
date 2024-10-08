@@ -1,7 +1,6 @@
 from aiogram.filters import CommandObject, CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
-from aiogram.utils.deep_linking import decode_payload
 
 from .chat_join_request.captcha_approve import approve
 from .router import router
