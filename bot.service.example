@@ -3,8 +3,8 @@ Description=Bot app
 
 [Service]
 Type=simple
-EnvironmentFile=/home/tire/Documents/captcha_bot/config/.env
-WorkingDirectory=/home/tire/Documents/captcha_bot
+EnvironmentFile=/bot_direcory/config/.env
+WorkingDirectory=/bot_directory
 ExecStartPre=poetry install
 ExecStart=poetry run python app.py
 Restart=always
