@@ -1,12 +1,14 @@
-from aiogram.types import ChatJoinRequest, InlineKeyboardButton, Message
-from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.fsm.context import FSMContext
-from aiogram.utils.deep_linking import create_start_link
+import asyncio
 
-from .router import router
+from aiogram.fsm.context import FSMContext
+from aiogram.types import ChatJoinRequest, InlineKeyboardButton, Message
+from aiogram.utils.deep_linking import create_start_link
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
 from messages import get_message
 from states import CaptchaStates
-import asyncio
+
+from .router import router
 
 
 async def _send_hello(request: ChatJoinRequest) -> None:

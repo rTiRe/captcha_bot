@@ -1,3 +1,1 @@
-from . import router
-from . import on_join
-from . import captcha_approve
+from . import captcha_approve, on_join, router

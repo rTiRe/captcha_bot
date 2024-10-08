@@ -1,9 +1,11 @@
+import asyncio
+import logging
+
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.redis import RedisStorage
-import asyncio
+
 from config.settings import settings
 from handlers import router
-import logging
 from messages import _fill_data
 
 logging.basicConfig(level=logging.INFO)

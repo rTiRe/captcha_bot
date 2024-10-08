@@ -17,6 +17,7 @@ aiosqlite = "^0.20.0"
 alembic = "^1.13.3"
 emoji = "^2.14.0"
 redis = "^5.1.1"
+isort = "^5.13.2"
 
 
 [build-system]

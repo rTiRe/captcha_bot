@@ -1,12 +1,15 @@
-from .router import router
-from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
+import asyncio
+
 from aiogram import F
 from aiogram.enums import ParseMode
-from messages import get_owner_id, set_owner_id, get_admins_ids, add_admin_id
+from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery, Message
+
 from keyboards import admins_keyboard, return_back_keyboard
+from messages import add_admin_id, get_admins_ids, get_owner_id, set_owner_id
 from states import SettingsStates
-import asyncio
+
+from .router import router
 
 
 async def deliting_admin() -> None:

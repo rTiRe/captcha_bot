@@ -1,13 +1,15 @@
-from aiogram.types import ChatJoinRequest, Message
-from database.database import get_db
-from database.models.messages import HelloMessage, CaptchaButton, CaptchaMessage, WelcomeMessage
-from database.models.users import User, Admin
-from sqlalchemy import select, update, delete
-from sqlalchemy.dialects.sqlite import insert
 import asyncio
+
 import emoji
 from aiogram.fsm.context import FSMContext
+from aiogram.types import ChatJoinRequest, Message
+from sqlalchemy import delete, select, update
+from sqlalchemy.dialects.sqlite import insert
 
+from database.database import get_db
+from database.models.messages import (CaptchaButton, CaptchaMessage,
+                                      HelloMessage, WelcomeMessage)
+from database.models.users import Admin, User
 
 messages_models: dict[str, HelloMessage | CaptchaButton | CaptchaMessage | WelcomeMessage] = {
     'captcha_buttons': CaptchaButton,

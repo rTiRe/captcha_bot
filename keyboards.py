@@ -1,4 +1,5 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
 from config import settings
 
 back_button = InlineKeyboardButton(

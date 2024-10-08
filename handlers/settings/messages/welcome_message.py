@@ -1,10 +1,13 @@
-from .router import router
 from aiogram import F
-from states import SettingsStates
-from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
-from keyboards import message_edit_keyboard
+from aiogram.types import CallbackQuery
+
 from config import settings
+from keyboards import message_edit_keyboard
+from states import SettingsStates
+
+from .router import router
+
 
 @router.callback_query(
     SettingsStates.edit_messages.choose_category,

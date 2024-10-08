@@ -1,14 +1,16 @@
-from .router import router
-from aiogram.types import CallbackQuery, Message
-from states import SettingsStates
-from aiogram.fsm.context import FSMContext
 from aiogram import F
+from aiogram.enums import ParseMode
+from aiogram.exceptions import TelegramBadRequest
+from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery, Message
+from aiogram.utils.serialization import deserialize_telegram_object_to_python
+
+from config import settings
 from keyboards import edit_messages_keyboard
 from messages import set_message
-from aiogram.utils.serialization import deserialize_telegram_object_to_python
-from aiogram.exceptions import TelegramBadRequest
-from aiogram.enums import ParseMode
-from config import settings
+from states import SettingsStates
+
+from .router import router
 
 
 @router.message(SettingsStates.edit_messages.edit_hello_message)

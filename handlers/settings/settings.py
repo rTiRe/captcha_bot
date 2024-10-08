@@ -1,12 +1,14 @@
-from .router import router
+from aiogram import F
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
-from aiogram import F
-from messages import get_owner_id, set_owner_id
-from keyboards import settings_keyboard
-from states import SettingsStates
+from aiogram.types import CallbackQuery, Message
+
 from config import settings as cfg_settings
+from keyboards import settings_keyboard
+from messages import get_owner_id, set_owner_id
+from states import SettingsStates
+
+from .router import router
 
 
 @router.callback_query(SettingsStates.edit_messages.choose_category, F.data == 'return_back')

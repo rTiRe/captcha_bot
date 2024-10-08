@@ -1,5 +1,5 @@
+from sqlalchemy import Boolean, Column, Index, Integer, PickleType
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import Integer, PickleType, Boolean, Index, Column
 
 from .meta import Base
 
