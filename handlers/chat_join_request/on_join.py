@@ -6,6 +6,7 @@ from aiogram.utils.deep_linking import create_start_link
 from .router import router
 from messages import get_message
 from states import CaptchaStates
+import asyncio
 
 
 async def _send_hello(request: ChatJoinRequest) -> None:
@@ -30,7 +31,7 @@ async def _send_captcha(request: ChatJoinRequest, state: FSMContext) -> None:
                 text=captcha_button['text'],
                 url=link,
             ))
-            await message.edit_reply_markup(reply_markup=keyboard.as_markup())
+            asyncio.create_task(message.edit_reply_markup(reply_markup=keyboard.as_markup()))
         await state.update_data(request=request)
 
 
