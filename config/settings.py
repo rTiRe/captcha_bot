@@ -14,8 +14,9 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# Keyboard
+JOIN_REQUEST_TIMEOUT = 90
 
+# Keyboard
 RETURN_BACK_BUTTON = '◀️ назад'
 ADMINS_BUTTON = '🛡️ Администраторы'
 MESSAGES_BUTTON = '💬 Сообщения'

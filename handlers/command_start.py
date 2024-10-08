@@ -1,12 +1,13 @@
 from aiogram.filters import CommandObject, CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from .chat_join_request.captcha_approve import approve
 from .router import router
 
 
 @router.message(CommandStart(deep_link=True, deep_link_encoded=True))
-async def start_encoded(message: Message, command: CommandObject, state: FSMContext) -> None:
+async def start_encoded(message: Message, command: CommandObject, state: FSMContext, scheduler: AsyncIOScheduler) -> None:
     if command.args.startswith('approve_'):
-        await approve(message, command, state)
+        await approve(message, command, state, scheduler)
