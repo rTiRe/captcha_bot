@@ -8,6 +8,7 @@ from messages import set_message
 from aiogram.utils.serialization import deserialize_telegram_object_to_python
 from aiogram.exceptions import TelegramBadRequest
 from aiogram.enums import ParseMode
+from config import settings
 
 
 @router.message(SettingsStates.edit_messages.edit_hello_message)
@@ -26,12 +27,13 @@ async def edit_message(message: Message, state: FSMContext, query: CallbackQuery
     try:
         await set_message(message_type, message_json, added_by, is_active=True)
     except:
-        await messages(callback, state, f'*Ошибка* изменения сообщения.')
+        info = settings.EDITING_ERROR_INFO
     else:
-        await messages(callback, state, f'*Успешно* изменено.')
+        info = settings.SUCCESS_EDITED_INFO
     finally:
         if message: await message.delete()
         await state.clear()
+        await messages(callback, state, info)
 
 
 @router.callback_query(SettingsStates.edit_messages.edit_hello_message, F.data == 'blank')
@@ -50,7 +52,7 @@ async def leave_blank(query: CallbackQuery, state: FSMContext) -> None:
 async def messages(callback: CallbackQuery, state: FSMContext, info: str = '') -> None:
     info = f'{info}\n\n' if info else info
     await callback.message.edit_text(
-        f'{info}Выберите категорию для редактирования:',
+        settings.CHOOSE_CATEGORY_MESSAGE.format(info=info),
         reply_markup=edit_messages_keyboard,
         parse_mode=ParseMode.MARKDOWN,
     )

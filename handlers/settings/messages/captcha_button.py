@@ -4,7 +4,7 @@ from states import SettingsStates
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
 from keyboards import message_edit_keyboard
-from aiogram.utils.serialization import deserialize_telegram_object_to_python
+from config import settings
 
 
 @router.callback_query(
@@ -13,7 +13,7 @@ from aiogram.utils.serialization import deserialize_telegram_object_to_python
 )
 async def edit_captcha_button(callback: CallbackQuery, state: FSMContext) -> None:
     await callback.message.edit_text(
-        'Отправьте новый текст кнопки капчи (оставьте пустым, чтобы не отображать):',
+        settings.NEW_CAPTCHA_BUTTON_MESSAGE,
         reply_markup=message_edit_keyboard,
     )
     await state.update_data(callback=callback, message_type='captcha_buttons')

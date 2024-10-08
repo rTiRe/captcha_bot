@@ -4,6 +4,7 @@ from states import SettingsStates
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
 from keyboards import message_edit_keyboard
+from config import settings
 
 
 @router.callback_query(
@@ -12,7 +13,7 @@ from keyboards import message_edit_keyboard
 )
 async def edit_captcha_message(callback: CallbackQuery, state: FSMContext) -> None:
     await callback.message.edit_text(
-        'Отправьте новое сообщение капчи (оставьте пустым, чтобы не отображать):',
+        settings.NEW_CAPTCHA_MESSAGE_MESSAGE,
         reply_markup=message_edit_keyboard,
     )
     await state.update_data(callback=callback, message_type='captcha_messages')
