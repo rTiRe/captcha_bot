@@ -22,6 +22,5 @@ async def approve(message: Message, command: CommandObject, state: FSMContext) -
     await state.update_data(message=message, channel_id=args[1])
     asyncio.create_task(add_user(message.from_user.id))
     welcome_message = await get_message('welcome_messages', state)
-    await message.answer('now')
     if welcome_message:
         await Message(**welcome_message).as_(message.bot).send_copy(message.chat.id)
