@@ -50,6 +50,10 @@ edit_messages_keyboard = InlineKeyboardMarkup(inline_keyboard=[
         text=settings.EDIT_WELCOME_MESSAGE_BUTTON,
         callback_data='edit_welcome',
     )],
+    [InlineKeyboardButton(
+        text=settings.EDIT_TIMEOUT_MESSAGE_BUTTON,
+        callback_data='edit_timeout',
+    )],
 ])
 
 return_back_keyboard = InlineKeyboardMarkup(inline_keyboard=[

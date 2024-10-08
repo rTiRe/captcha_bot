@@ -8,7 +8,7 @@ from sqlalchemy.dialects.sqlite import insert
 
 from database.database import get_db
 from database.models.messages import (CaptchaButton, CaptchaMessage,
-                                      HelloMessage, WelcomeMessage)
+                                      HelloMessage, WelcomeMessage, TimeoutMessage)
 from database.models.users import Admin, User
 
 messages_models: dict[str, HelloMessage | CaptchaButton | CaptchaMessage | WelcomeMessage] = {
@@ -16,6 +16,7 @@ messages_models: dict[str, HelloMessage | CaptchaButton | CaptchaMessage | Welco
     'captcha_messages': CaptchaMessage,
     'hello_messages': HelloMessage,
     'welcome_messages': WelcomeMessage,
+    'timeout_messages': TimeoutMessage,
 }
 messages = {}
 owner_id = 0

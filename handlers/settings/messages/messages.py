@@ -17,6 +17,7 @@ from .router import router
 @router.message(SettingsStates.edit_messages.edit_captcha_button)
 @router.message(SettingsStates.edit_messages.edit_captcha_message)
 @router.message(SettingsStates.edit_messages.edit_welcome_message)
+@router.message(SettingsStates.edit_messages.edit_timeout_message)
 async def edit_message(message: Message, state: FSMContext, query: CallbackQuery = None) -> None:
     state_data = await state.get_data()
     callback: CallbackQuery = state_data['callback']
@@ -42,6 +43,7 @@ async def edit_message(message: Message, state: FSMContext, query: CallbackQuery
 @router.callback_query(SettingsStates.edit_messages.edit_captcha_button, F.data == 'blank')
 @router.callback_query(SettingsStates.edit_messages.edit_captcha_message, F.data == 'blank')
 @router.callback_query(SettingsStates.edit_messages.edit_welcome_message, F.data == 'blank')
+@router.callback_query(SettingsStates.edit_messages.edit_timeout_message, F.data == 'blank')
 async def leave_blank(query: CallbackQuery, state: FSMContext) -> None:
     await edit_message('', state, query)
 
@@ -51,6 +53,7 @@ async def leave_blank(query: CallbackQuery, state: FSMContext) -> None:
 @router.callback_query(SettingsStates.edit_messages.edit_captcha_button, F.data == 'return_back')
 @router.callback_query(SettingsStates.edit_messages.edit_captcha_message, F.data == 'return_back')
 @router.callback_query(SettingsStates.edit_messages.edit_welcome_message, F.data == 'return_back')
+@router.callback_query(SettingsStates.edit_messages.edit_timeout_message, F.data == 'return_back')
 async def messages(callback: CallbackQuery, state: FSMContext, info: str = '') -> None:
     info = f'{info}\n\n' if info else info
     await callback.message.edit_text(

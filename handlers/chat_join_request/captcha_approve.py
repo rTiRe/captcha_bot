@@ -4,7 +4,9 @@ from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import CommandObject
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
+from aiogram.enums import ParseMode
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from config import settings
 
 from messages import add_user, get_message
 
@@ -18,6 +20,7 @@ async def approve(message: Message, command: CommandObject, state: FSMContext, s
             message.from_user.id,
         )
     except TelegramBadRequest:
+        await message.answer(settings.APPROVE_ERROR_MESSAGE, parse_mode=ParseMode.MARKDOWN)
         return
     scheduler.remove_job(f'{args[2]}{args[3]}')
     asyncio.create_task(message.bot.delete_message(int(args[2]), int(args[3])))

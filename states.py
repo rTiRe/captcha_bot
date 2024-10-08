@@ -17,6 +17,7 @@ class EditingMessagesStates(StatesGroup):
     edit_captcha_message = State()
     edit_captcha_button = State()
     edit_welcome_message = State()
+    edit_timeout_message = State()
 
 
 class SettingsStates(StatesGroup):

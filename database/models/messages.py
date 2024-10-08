@@ -25,3 +25,6 @@ class CaptchaButton(BaseMessage, Base):
 
 class HelloMessage(BaseMessage, Base):
     __tablename__ = 'hello_messages'
+
+class TimeoutMessage(BaseMessage, Base):
+    __tablename__ = 'timeout_messages'
